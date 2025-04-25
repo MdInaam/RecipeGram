@@ -1,7 +1,7 @@
 import { AuthContext } from "@/context/AuthContext";
 import { Stack } from "expo-router";
 import { useState } from "react";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 
 interface USER{
   id:number,
@@ -15,7 +15,7 @@ export default function RootLayout() {
   return (
 
     <AuthContext.Provider value={{user, setUser}}>
-    <GestureHandlerRootView>
+     
     <Stack>
 
       <Stack.Screen name="landing"  
@@ -63,11 +63,28 @@ export default function RootLayout() {
 
           }}
       />
-      
 
+
+
+      <Stack.Screen name="LibraryComponents/PlaylistDetail"
+          options={{
+
+          headerShown: false
+
+          }}
+      />
+
+
+      <Stack.Screen name="Upload/UploadRecipe"
+          options={{
+
+          headerShown: false
+
+          }}
+      />      
 
     </Stack>
-    </GestureHandlerRootView>
+    
     </AuthContext.Provider>
     
 

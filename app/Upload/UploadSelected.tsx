@@ -1,12 +1,15 @@
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import React from 'react';
 import { Video, ResizeMode } from 'expo-av';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
+// Get screen dimensions for responsive sizing
+const { width } = Dimensions.get('window');
+
 export default function UploadSelected({ videoUri, onRemove }: { videoUri: string, onRemove: () => void }) {
   return (
     <View style={styles.container}>
-      {/* Video Frame (Fixed Size) */}
+      {/* Video Frame (Increased Size) */}
       <View style={styles.videoFrame}>
         <Video
           source={{ uri: videoUri }}
@@ -17,7 +20,7 @@ export default function UploadSelected({ videoUri, onRemove }: { videoUri: strin
 
         {/* Remove Video Button (X Icon) */}
         <TouchableOpacity onPress={onRemove} style={styles.closeButton}>
-          <MaterialIcons name="close" size={15} color="white" />
+          <MaterialIcons name="close" size={20} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -32,29 +35,28 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   videoFrame: {
-    width: 140, // Fixed width
-    height: 250, // Fixed height for preview
+    width: width * 0.6, // 60% of screen width for a larger frame
+    height: width * 1.0, // Maintain a 16:9 aspect ratio (height = width * (16/9) ≈ width * 1.777)
     backgroundColor: 'black', // Keeps a clean frame
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
-    
     overflow: 'hidden',
   },
   video: {
-    width: '100%', // Full width of the frame
-    height: '100%', // Full height of the frame
+    width: '100%',
+    height: '100%',
     borderRadius: 15,
     overflow: 'hidden',
   },
   closeButton: {
     position: 'absolute',
-    top: 5,
-    right: 5,
+    top: 10,
+    right: 10,
     backgroundColor: 'rgba(0,0,0,0.6)',
     borderRadius: 15,
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native';
-import RecipeLibrary from '../RecipesComponents/RecipeLibrary';
-import ND from '../RecipesComponents/ND';
-import Fridge from '../RecipesComponents/Fridge';
+import RecipeLibrary from '../LibraryComponents/RecipeLibrary';
+import ND from '../NDComponents/ND';
+import Fridge from '../FridgeComponents/Fridge';
 import Colors from '@/Data/Colors';
 
 const { width } = Dimensions.get('window');
